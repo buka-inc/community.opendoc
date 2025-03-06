@@ -1,5 +1,12 @@
 # @opendoc/compiler
 
+## 1.1.2
+
+### Patch Changes
+
+- Updated dependencies [8573019]
+  - @opendoc/sdk@1.3.6
+
 ## 1.1.1
 
 ### Patch Changes
