@@ -1,5 +1,11 @@
 # @opendoc/sdk
 
+## 1.3.6
+
+### Patch Changes
+
+- 8573019: 确保生成的模板代码中.set 参数不是空值
+
 ## 1.3.5
 
 ### Patch Changes
