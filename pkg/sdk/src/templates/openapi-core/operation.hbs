@@ -23,7 +23,7 @@ export function {{h__get-safe-operation-name pathname method operation}}<STATUS 
   {{/each~}}
 
   {{#each (r__filter (r__propEq "in" "header") operation.parameters)}}
-  if (arg && "{{name}}" in arg) req.set("{{name}}", arg["{{name}}"])
+  if (arg && "{{name}}" in arg && arg["{{name}}"]) req.set("{{name}}", arg["{{name}}"])
   {{/each~}}
 
   {{#each (r__filter (r__propEq "in" "path") operation.parameters)}}
