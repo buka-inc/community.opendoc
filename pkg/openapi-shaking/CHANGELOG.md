@@ -1,5 +1,13 @@
 # @opendoc/openapi-shaking
 
+## 1.5.2
+
+### Patch Changes
+
+- cb4fd15: tolerant wrong swagger
+- Updated dependencies [cb4fd15]
+  - @opendoc/openapi-reference-parser@1.3.8
+
 ## 1.5.1
 
 ### Patch Changes
