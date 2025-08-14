@@ -3,9 +3,10 @@ import { OpenAPIV3 } from 'openapi-types'
 import { ShakingFilter, ShakingFilterSync } from './types/shaking-filter'
 import { isValidMethod } from './utils/is-valid-method'
 import { openapiShakingOrphanedComponents } from './shaking-orphaned-components'
+import { ShakingOptions } from './types/shaking-options'
 
 
-export async function openapiShaking(document: Readonly<OpenAPIV3.Document>, filter: ShakingFilter): Promise<OpenAPIV3.Document> {
+export async function openapiShaking(document: Readonly<OpenAPIV3.Document>, filter: ShakingFilter, options: ShakingOptions = {}): Promise<OpenAPIV3.Document> {
   let doc = document
 
   const pairs = await Promise.all(
@@ -36,10 +37,10 @@ export async function openapiShaking(document: Readonly<OpenAPIV3.Document>, fil
   const paths = R.fromPairs(pairs.filter(R.isNotNil) as [string, unknown][])
 
   doc = R.assoc('paths', paths, doc)
-  return openapiShakingOrphanedComponents(doc)
+  return openapiShakingOrphanedComponents(doc, options)
 }
 
-export function openapiShakingSync(document: Readonly<OpenAPIV3.Document>, filter: ShakingFilterSync): OpenAPIV3.Document {
+export function openapiShakingSync(document: Readonly<OpenAPIV3.Document>, filter: ShakingFilterSync, options: ShakingOptions = {}): OpenAPIV3.Document {
   let doc = document
 
   for (const path in document.paths) {
@@ -59,5 +60,5 @@ export function openapiShakingSync(document: Readonly<OpenAPIV3.Document>, filte
     }
   }
 
-  return openapiShakingOrphanedComponents(doc)
+  return openapiShakingOrphanedComponents(doc, options)
 }

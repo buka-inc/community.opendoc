@@ -1,10 +1,11 @@
 import * as R from 'ramda'
 import { OpenAPIV3 } from 'openapi-types'
 import { OpenapiReferenceParser } from '@opendoc/openapi-reference-parser'
+import { ShakingOptions } from './types/shaking-options'
 
 
-export function openapiShakingOrphanedComponents(document: Readonly<OpenAPIV3.Document>): OpenAPIV3.Document {
-  const dependencies = new OpenapiReferenceParser(document).parse()
+export function openapiShakingOrphanedComponents(document: Readonly<OpenAPIV3.Document>, options: ShakingOptions = {}): OpenAPIV3.Document {
+  const dependencies = new OpenapiReferenceParser(document, options).parse()
 
   const refs = R.unnest(Object.values(dependencies.paths || {})
     .map((pathObj) => R.unnest(Object.values(pathObj || {})
