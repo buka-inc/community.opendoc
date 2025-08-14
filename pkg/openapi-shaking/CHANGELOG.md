@@ -1,5 +1,13 @@
 # @opendoc/openapi-shaking
 
+## 1.5.1
+
+### Patch Changes
+
+- a0eb075: 移除不必要的依赖项
+- Updated dependencies [d7f003b]
+  - @opendoc/openapi-reference-parser@1.3.7
+
 ## 1.5.0
 
 ### Minor Changes

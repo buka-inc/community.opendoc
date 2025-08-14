@@ -5,7 +5,7 @@
   "types": "dist/esm/src/index.d.ts",
   "packageManager": "pnpm@10.2.1",
   "description": "Remove the useless components and paths of openapi document.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "directories": {
     "test": "test"
   },

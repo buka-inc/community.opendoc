@@ -1,5 +1,11 @@
 # @opendoc/openapi-reference-parser
 
+## 1.3.7
+
+### Patch Changes
+
+- d7f003b: tolerant wrong swagger
+
 ## 1.3.6
 
 ### Patch Changes
