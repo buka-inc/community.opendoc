@@ -5,6 +5,7 @@ import { isObject } from './utils/is-object'
 import { JSONPath } from 'jsonpath-plus'
 import { Reference } from './reference'
 import { OpenapiReferenceParserResult } from './types/openapi-reference-parser-result'
+import { OpenapiReferenceParserOptions } from './types/openapi-reference-parser-options'
 
 
 export class OpenapiReferenceParser {
@@ -14,6 +15,7 @@ export class OpenapiReferenceParser {
 
   constructor(
     private document: OpenAPIV3.Document,
+    private options: OpenapiReferenceParserOptions = {},
   ) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,12 +77,16 @@ export class OpenapiReferenceParser {
       }
 
       for (let i = 0; i < dependencies.length; i++) {
-        const dep = dependencies[i]
-        const depDirectDependencies = dep.get(this.directDependenciesStorage)
-        const depTransitiveDependencies = dep.get(this.transitiveDependenciesStorage)
+        try {
+          const dep = dependencies[i]
+          const depDirectDependencies = dep.get(this.directDependenciesStorage)
+          const depTransitiveDependencies = dep.get(this.transitiveDependenciesStorage)
 
-        if (depTransitiveDependencies) appendToDependencies(depTransitiveDependencies)
-        else if (depDirectDependencies) appendToDependencies(depDirectDependencies)
+          if (depTransitiveDependencies) appendToDependencies(depTransitiveDependencies)
+          else if (depDirectDependencies) appendToDependencies(depDirectDependencies)
+        } catch (err) {
+          if (!this.options.tolerant) throw err
+        }
       }
 
       ref.set(this.transitiveDependenciesStorage, transitiveDependencies)

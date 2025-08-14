@@ -6,11 +6,11 @@ import * as ObjectPath from 'object-path'
 export abstract class Reference {
   static from($ref: string | string[]): Reference {
     if (typeof $ref === 'string') {
-      if ($ref.startsWith('#')) return new RelativeReference($ref.split('/').slice(1))
-      return new AbsoluteReference($ref)
+      if ($ref.startsWith('#')) return new LocalReference($ref.split('/').slice(1))
+      return new ExternalFileReference($ref)
     }
 
-    return new RelativeReference($ref)
+    return new LocalReference($ref)
   }
 
   abstract toString(): string
@@ -19,14 +19,17 @@ export abstract class Reference {
   abstract equals(ref: Reference): boolean
 }
 
-export class RelativeReference extends Reference {
+/**
+ * Represents a reference to a location within the same document.
+ */
+export class LocalReference extends Reference {
   constructor(private paths: string[]) {
     super()
   }
 
-  async resolve<T>(object: object): Promise<T | undefined> {
-    return R.pathOr(undefined, this.paths, object)
-  }
+  // resolve<T>(object: object): T | undefined {
+  //   return R.pathOr(undefined, this.paths, object)
+  // }
 
   toString(): string {
     return `#/${this.paths.join('/')}`
@@ -41,12 +44,44 @@ export class RelativeReference extends Reference {
   }
 
   equals(ref: Reference): boolean {
-    if (!(ref instanceof RelativeReference)) return false
+    if (!(ref instanceof LocalReference)) return false
     return R.equals(this.paths, ref.paths)
   }
 }
 
-export class AbsoluteReference extends Reference {
+/**
+ * Represents a reference to a location within a remote document.
+ */
+export class RemoteReference extends Reference {
+  constructor(private address: string) {
+    super()
+  }
+
+  // async resolve<T>(): Promise<T | undefined> {
+  //   throw new Error('Not implemented')
+  // }
+
+  toString(): string {
+    return this.address
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  set<T>(storage: ReferenceStorage<T>, value: T): void {
+    throw new Error(`RemoteReference(${this.address}) is not supported`)
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  get<T>(storage: ReferenceStorage<T>): T | undefined {
+    throw new Error(`RemoteReference(${this.address}) is not supported`)
+  }
+
+  equals(ref: Reference): boolean {
+    if (!(ref instanceof RemoteReference)) return false
+    return this.address === ref.address
+  }
+}
+
+export class ExternalFileReference extends Reference {
   constructor(private address: string) {
     super()
   }
@@ -61,16 +96,16 @@ export class AbsoluteReference extends Reference {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   set<T>(storage: ReferenceStorage<T>, value: T): void {
-    throw new Error('AbsoluteReference is not supported')
+    throw new Error(`ExternalFileReference(${this.address}) is not supported`)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   get<T>(storage: ReferenceStorage<T>): T | undefined {
-    throw new Error('AbsoluteReference is not supported')
+    throw new Error(`ExternalFileReference(${this.address}) is not supported`)
   }
 
   equals(ref: Reference): boolean {
-    if (!(ref instanceof AbsoluteReference)) return false
+    if (!(ref instanceof ExternalFileReference)) return false
     return this.address === ref.address
   }
 }

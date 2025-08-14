@@ -57,6 +57,9 @@ const swagger: OpenAPIV3.Document = {
           address: {
             $ref: '#/components/schemas/Address',
           },
+          pets: {
+            $ref: "Error-ModelName{namespace='java.util', name='List'}",
+          },
         },
       },
       Address: {
@@ -76,7 +79,7 @@ const swagger: OpenAPIV3.Document = {
 
 
 test('OpenapiReferenceParser', () => {
-  const parser = new OpenapiReferenceParser(swagger)
+  const parser = new OpenapiReferenceParser(swagger, { tolerant: true })
   const result = parser.parse()
 
   expect(result).toEqual({
@@ -87,12 +90,16 @@ test('OpenapiReferenceParser', () => {
             '#/components/parameters/id',
             '#/components/schemas/User',
             '#/components/schemas/Address',
+            "Error-ModelName{namespace='java.util', name='List'}",
           ],
           directDependencies: [
             '#/components/parameters/id',
             '#/components/schemas/User',
           ],
-          transitiveDependencies: ['#/components/schemas/Address'],
+          transitiveDependencies: [
+            '#/components/schemas/Address',
+            "Error-ModelName{namespace='java.util', name='List'}",
+          ],
         },
       },
     },
@@ -106,8 +113,14 @@ test('OpenapiReferenceParser', () => {
       },
       schemas: {
         User: {
-          dependencies: ['#/components/schemas/Address'],
-          directDependencies: ['#/components/schemas/Address'],
+          dependencies: [
+            '#/components/schemas/Address',
+            "Error-ModelName{namespace='java.util', name='List'}",
+          ],
+          directDependencies: [
+            '#/components/schemas/Address',
+            "Error-ModelName{namespace='java.util', name='List'}",
+          ],
           transitiveDependencies: [],
         },
         Address: {
