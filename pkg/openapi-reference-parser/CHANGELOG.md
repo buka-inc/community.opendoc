@@ -1,5 +1,11 @@
 # @opendoc/openapi-reference-parser
 
+## 1.3.9
+
+### Patch Changes
+
+- b5ca3e5: use @scalar/openapi-types replace openapi-types
+
 ## 1.3.8
 
 ### Patch Changes

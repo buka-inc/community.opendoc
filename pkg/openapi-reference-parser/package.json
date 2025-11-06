@@ -11,7 +11,7 @@
   },
   "packageManager": "pnpm@10.2.1",
   "description": "Get the dependencies of reference in openapi.",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "directories": {
     "test": "test"
   },

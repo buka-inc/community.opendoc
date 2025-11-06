@@ -1,5 +1,13 @@
 # @opendoc/openapi-shaking
 
+## 1.5.3
+
+### Patch Changes
+
+- b5ca3e5: use @scalar/openapi-types replace openapi-types
+- Updated dependencies [b5ca3e5]
+  - @opendoc/openapi-reference-parser@1.3.9
+
 ## 1.5.2
 
 ### Patch Changes
