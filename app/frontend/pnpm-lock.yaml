@@ -150,9 +150,6 @@ importers:
         specifier: ^13.2.0
         version: 13.2.0(typescript@5.5.4)
     devDependencies:
-      '@buka/eslint-config':
-        specifier: ^2.0.3
-        version: 2.0.3(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
       '@catppuccin/tailwindcss':
         specifier: ^0.1.6
         version: 0.1.6(tailwindcss@3.4.10)
@@ -180,9 +177,6 @@ importers:
       daisyui:
         specifier: ^4.12.10
         version: 4.12.10(postcss@8.4.41)
-      eslint:
-        specifier: ^9.9.1
-        version: 9.9.1(jiti@1.21.6)
       keq-cli:
         specifier: ^4.7.3
         version: 4.7.3(keq@2.7.4)
@@ -415,11 +409,6 @@ packages:
   '@babel/types@7.25.6':
     resolution: {integrity: sha512-/l42B1qxpG6RdfYf343Uw1vmDjeNhneUXtzhojE7pDgfpEypmRhI6j1kr17XCVv4Cgl9HdAiQY2x0GwKm7rWCw==}
     engines: {node: '>=6.9.0'}
-
-  '@buka/eslint-config@2.0.3':
-    resolution: {integrity: sha512-0Ip3FqKoelgModaaZLXlfvSDiBQSu/jcSi4VJJzSUMiPtBZMLFNifKHaiEZ6q0XlGNLD+1YggnCNMV2zAWg8PA==}
-    peerDependencies:
-      eslint: ^9.9.1
 
   '@catppuccin/daisyui@1.1.1':
     resolution: {integrity: sha512-Ytpt9bLoWZFm9ysrK6KAS0fWyx6E3pS4j/DzLfsUq+JkPptxtH9vYwCNrNkRpZQOTpU0TJUtsG3JYtFV6mXhzA==}
@@ -5513,15 +5502,6 @@ packages:
   types-ramda@0.30.1:
     resolution: {integrity: sha512-1HTsf5/QVRmLzcGfldPFvkVsAdi1db1BBKzi7iW3KBUlOICg/nKnFS+jGqDJS3YD8VsWbAh7JiHeBvbsw8RPxA==}
 
-  typescript-eslint@8.3.0:
-    resolution: {integrity: sha512-EvWjwWLwwKDIJuBjk2I6UkV8KEQcwZ0VM10nR1rIunRDIP67QJTZAHBXTX0HW/oI1H10YESF8yWie8fRQxjvFA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   typescript@5.5.4:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
@@ -6294,20 +6274,6 @@ snapshots:
       '@babel/helper-string-parser': 7.24.8
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
-
-  '@buka/eslint-config@2.0.3(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)':
-    dependencies:
-      '@eslint/js': 9.9.1
-      '@stylistic/eslint-plugin': 2.7.2(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/eslint-plugin': 8.3.0(@typescript-eslint/parser@8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/parser': 8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      eslint: 9.9.1(jiti@1.21.6)
-      eslint-flat-config-utils: 0.3.1
-      globals: 15.9.0
-      typescript-eslint: 8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   '@catppuccin/daisyui@1.1.1(daisyui@4.12.10(postcss@8.4.41))(tailwindcss@3.4.10)':
     dependencies:
@@ -12431,17 +12397,6 @@ snapshots:
   types-ramda@0.30.1:
     dependencies:
       ts-toolbelt: 9.6.0
-
-  typescript-eslint@8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4):
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 8.3.0(@typescript-eslint/parser@8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/parser': 8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/utils': 8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-    optionalDependencies:
-      typescript: 5.5.4
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
 
   typescript@5.5.4: {}
 

@@ -1,16 +1,16 @@
 import * as R from 'ramda'
-import { OpenAPIV3 } from 'openapi-types'
+import { OpenAPIV3 } from '@scalar/openapi-types'
 import { ShakingFilter, ShakingFilterSync } from './types/shaking-filter'
 import { isValidMethod } from './utils/is-valid-method'
 import { openapiShakingOrphanedComponents } from './shaking-orphaned-components'
 import { ShakingOptions } from './types/shaking-options'
 
 
-export async function openapiShaking(document: Readonly<OpenAPIV3.Document>, filter: ShakingFilter, options: ShakingOptions = {}): Promise<OpenAPIV3.Document> {
+export async function openapiShaking<T extends OpenAPIV3.Document>(document: Readonly<T>, filter: ShakingFilter, options: ShakingOptions = {}): Promise<T> {
   let doc = document
 
   const pairs = await Promise.all(
-    Object.entries(document.paths).map(async ([path, methods]): Promise<[string, unknown] | undefined> => {
+    Object.entries(document.paths || {}).map(async ([path, methods]): Promise<[string, unknown] | undefined> => {
       if (!methods) return [path, methods]
 
       const pairs = await Promise.all(
@@ -34,9 +34,9 @@ export async function openapiShaking(document: Readonly<OpenAPIV3.Document>, fil
     }),
   )
 
-  const paths = R.fromPairs(pairs.filter(R.isNotNil) as [string, unknown][])
+  const paths = R.fromPairs(pairs.filter(R.isNotNil)) as unknown as T['paths']
 
-  doc = R.assoc('paths', paths, doc)
+  doc = R.assoc('paths', paths, doc) as T
   return openapiShakingOrphanedComponents(doc, options)
 }
 

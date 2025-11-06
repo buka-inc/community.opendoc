@@ -1,13 +1,16 @@
-import { OpenAPIV3 } from 'openapi-types'
+import { OpenAPIV3, OpenAPIV3_1 } from '@scalar/openapi-types'
+
+type ComponentKeys = keyof OpenAPIV3.ComponentsObject | keyof OpenAPIV3_1.ComponentsObject
+type HttpMethods = OpenAPIV3.HttpMethods | OpenAPIV3_1.HttpMethods
 
 export interface ReferenceStorage<T> {
   paths?: {
     [pattern: string]: {
-      [key in OpenAPIV3.HttpMethods]: T
+      [key in HttpMethods]: T
     } | undefined
   }
 
   components?: {
-    [key in keyof OpenAPIV3.ComponentsObject]: T
+    [key in ComponentKeys]: T
   }
 }

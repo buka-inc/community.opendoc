@@ -1,32 +1,21 @@
 {
-  "exclude": ["node_modules", "dist"],
-  "include": [
-    "env.d.ts",
-    "src/**/*",
-    ".eslintrc.cjs",
-    "jest.config.ts",
-    "test/**/*"
-  ],
   "compilerOptions": {
     "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "declaration": true,
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "target": "ESNext",
-    "baseUrl": "./",
-    "rootDir": "./",
+    "baseUrl": "./src",
     "paths": {
-      "~/*": ["src/*"],
-      "~~/*": ["./*"]
-    },
-    "plugins": [
-      { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
-    ]
+      "~/*": ["./*"],
+      "~~/*": ["../*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

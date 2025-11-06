@@ -1,14 +1,6 @@
 node_modules
 /src
-/test
-/build
-/.github
-/.vscode
-/.coverage
-
-# Dev Config File
-.commitlintrc.yml
-.eslintrc.cjs
-.gitignore
+.turbo
 jest.config.ts
 tsconfig.json
+tsconfig.*.json

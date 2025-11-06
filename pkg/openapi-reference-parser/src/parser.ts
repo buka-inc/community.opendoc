@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import { OpenAPIV3 } from 'openapi-types'
+import { OpenAPIV3, OpenAPIV3_1 } from '@scalar/openapi-types'
 import { ReferenceStorage } from './types/reference-storage'
 import { isObject } from './utils/is-object'
 import { JSONPath } from 'jsonpath-plus'
@@ -14,7 +14,7 @@ export class OpenapiReferenceParser {
   private dependenciesStorage: ReferenceStorage<Reference[]> = {}
 
   constructor(
-    private document: OpenAPIV3.Document,
+    private document: OpenAPIV3.Document | OpenAPIV3_1.Document,
     private options: OpenapiReferenceParserOptions = {},
   ) {}
 

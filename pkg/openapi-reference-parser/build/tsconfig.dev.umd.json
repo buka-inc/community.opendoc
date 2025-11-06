@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.umd.json",
-  "compilerOptions": {
-    "sourceMap": true,
-    "declarationMap": true
-  }
-}

@@ -16,6 +16,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
     "@nestjs/cli": "^10.4.5",
-    "turbo": "^2.1.1"
+    "turbo": "^2.1.1",
+    "@buka/eslint-config": "^3.0.0",
+    "eslint": "^9.39.1"
   }
 }
