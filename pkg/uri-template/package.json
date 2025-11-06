@@ -1,0 +1,60 @@
+{
+  "name": "@opendoc/uri-template",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "packageManager": "pnpm@10.2.1",
+  "description": "URI template implementation (RFC 6570 compliant)",
+  "version": "1.5.2",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buka-lnc/app.opendoc.git"
+  },
+  "keywords": [
+    "opendoc",
+    "openapi",
+    "swagger",
+    "url",
+    "uri",
+    "template",
+    "uri-template",
+    "url-template"
+  ],
+  "author": "Val.istar.Guo <val.istar.guo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buka-lnc/app.opendoc/issues"
+  },
+  "homepage": "https://github.com/buka-lnc/app.opendoc#readme",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:update": "jest --updateSnapshot"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.16.2",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
+    "jest-mock": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "type-fest": "^4.34.1"
+  }
+}

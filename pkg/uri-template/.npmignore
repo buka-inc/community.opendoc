@@ -1,0 +1,6 @@
+node_modules
+/src
+.turbo
+jest.config.ts
+tsconfig.json
+tsconfig.*.json
