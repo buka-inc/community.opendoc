@@ -11,7 +11,7 @@
   },
   "packageManager": "pnpm@10.2.1",
   "description": "URI template implementation (RFC 6570 compliant)",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "directories": {
     "test": "test"
   },
