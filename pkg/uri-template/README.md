@@ -7,6 +7,5 @@ import { UriTemplate } from "@opendoc/uri-template";
 
 const uriTemplate = new UriTemplate("/api/users/{id}");
 
-uriTemplate.extend({ id: 1 });
-// result: /api/users/1
+uriTemplate.extend({ id: 1 }); // api/users/1
 ```

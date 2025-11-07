@@ -8,7 +8,7 @@ export class UriTemplate {
 
   expand(context: UriTemplateContext): string {
     const parser = new UriTemplateParser(this.template, context)
-    return parser.expand(context)
+    return parser.expand()
   }
 }
 

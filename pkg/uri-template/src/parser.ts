@@ -74,7 +74,7 @@ export class UriTemplateParser {
     return result
   }
 
-  expand(context: UriTemplateContext): string {
+  expand(): string {
     return this.template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, (_, expression: string, literal) => {
       if (expression) {
         let operator: Operator = Operator.NONE
